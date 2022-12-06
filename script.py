@@ -16,7 +16,6 @@ bet = 0
 pseudo = ""
 level = 1
 
-
 def delprint(text, delay_time=0.01):
     for character in text:
         sys.stdout.write(character)
@@ -57,7 +56,6 @@ def update(key, value):
             c.execute("UPDATE user SET " + key +
                       " = %s WHERE name_user = %s", (value, pseudo))
             db.commit()
-
 
 def displayStats():
     user = getUser(pseudo)
@@ -130,7 +128,7 @@ def play():
 
     while True:
         try:
-            bet = float(input("Le jeu commence, entrez votre mise : ?"))
+            bet = float(input("Le jeu commence, entrez votre mise : "))
         except ValueError:
             print("🖥️ : Vous devez entrer un nombre")
             continue
@@ -181,6 +179,8 @@ def play():
             if (multiplier == 2):
                 update("first_time", user[9] + 1)
             amount = amount + earn
+			
+
             update("amount", amount)
 
             if (level != 3):
@@ -195,7 +195,7 @@ def play():
                 print("Nombre de coups joués : ", nb_try)
                 print("==========================================")
 
-            print("🖥️ : Vous avez gagné :", earn,
+            print("🖥️ : Vous avez gagné ", earn,
                   "€ vous êtes désormais au level", level, "avec ", amount, " €")
 
             choice = input("Voulez-vous continuer le jeu ? (o/n)")
