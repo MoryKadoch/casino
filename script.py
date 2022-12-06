@@ -63,11 +63,12 @@ def displayStats():
     nb_play = len(bets)
     avg_bet = sum(bets) / nb_play
     print("========= STATISTIQUES =============")
+    print("Statisques depuis le", user[11])
     print("Vous avez joué", nb_play, "fois")
     print("Votre plus grosse mise est de", user[7], "€")
     print("Votre plus petite mise est de", user[8], "€")
     print("Votre mise moyenne est de", avg_bet, "€")
-    print("Vous avez gagné", user[9], "€")
+    print("Vous avez gagné du premier coup", user[9], "fois.")
     print("Vous avez perdu", nb_play - user[9], " fois.")
     print("===================================")
 
@@ -77,15 +78,18 @@ pseudo = input("🖥️ : Je suis Python. Quel est votre pseudo ?")
 if getUser(pseudo) is None:
     createUser(pseudo)
     displayRules = True
+    print("🖥️ : Bonjour", pseudo, "vous avez", amount,
+      "€ .Très bien ! Installez vous SVP à la table de pari.")
 else:
     user = getUser(pseudo)
     amount = user[4]
     level = user[2]
     displayStats()
     displayRules = False
+    print("🖥️ : Bonjour", pseudo, " content de vous revoir ! Vous avez", amount,
+	  "€ .Très bien ! Installez vous SVP à la table de pari.")
 
-print("🖥️ : Bonjour", pseudo, "vous avez", amount,
-      "€ .Très bien ! Installez vous SVP à la table de pari.")
+
 
 if level > 1:
     print("🖥️ : Vous êtes au level", level)
